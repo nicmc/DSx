@@ -67,21 +67,27 @@ if {[file exists "[skin_directory]/DSx_Home_Page/DSx_home.page"] == 1} {
     add_de1_variable "$::DSx_home_pages" 360 450 -justify right -anchor "nw" -font [DSx_font font 8] -fill $::DSx_settings(font_colour) -textvariable {Tank [DSx_low_water]}
     add_de1_variable "$::DSx_home_pages" 580 490 -justify right -anchor "nw" -font [DSx_font font 8] -fill $::DSx_settings(red) -textvariable {[DSx_preheat_status]}
     set ::DSx_profile_name [add_de1_variable "$::DSx_home_pages" 410 640 -text "" -font [DSx_font font 10] -fill $::DSx_settings(font_colour) -anchor "center" -justify "center" -width [rescale_x_skin 600] -textvariable {$::settings(profile_title)}]
-    set ::DSx_bean_name [add_de1_variable "$::DSx_home_pages" 320 724 -justify right -anchor "nw" -font [DSx_font font 10] -fill $::DSx_settings(font_colour) -textvariable {*}]
-    set ::DSx_saw_name [add_de1_variable "$::DSx_home_pages" 320 774 -justify right -anchor "nw" -font [DSx_font font 10] -fill $::DSx_settings(font_colour) -textvariable {*}]
-    set ::DSx_sav_name [add_de1_variable "$::DSx_home_pages" 320 824 -justify right -anchor "nw" -font [DSx_font font 10] -fill $::DSx_settings(font_colour) -textvariable {*}]
-    set ::DSx_flush_name [add_de1_variable "$::DSx_home_pages" 320 874 -justify right -anchor "nw" -font [DSx_font font 10] -fill $::DSx_settings(font_colour) -textvariable {*}]
-    set ::DSx_steam_name [add_de1_variable "$::DSx_home_pages" 320 924 -justify right -anchor "nw" -font [DSx_font font 10] -fill $::DSx_settings(font_colour) -textvariable {*}]
-    set ::DSx_water_name [add_de1_variable "$::DSx_home_pages" 320 974 -justify right -anchor "nw" -font [DSx_font font 10] -fill $::DSx_settings(font_colour) -textvariable {*}]
-    set ::DSx_wsaw_name [add_de1_variable "$::DSx_home_pages" 320 1024 -justify right -anchor "nw" -font [DSx_font font 10] -fill $::DSx_settings(font_colour) -textvariable {[wsaw_fav_indicator]}]
+    set ::DSx_bean_name [add_de1_variable "$::DSx_home_pages" 320 704 -justify right -anchor "nw" -font [DSx_font font 10] -fill $::DSx_settings(font_colour) -textvariable {*}]
+    set ::DSx_saw_name [add_de1_variable "$::DSx_home_pages" 320 754 -justify right -anchor "nw" -font [DSx_font font 10] -fill $::DSx_settings(font_colour) -textvariable {*}]
+    set ::DSx_sav_name [add_de1_variable "$::DSx_home_pages" 320 804 -justify right -anchor "nw" -font [DSx_font font 10] -fill $::DSx_settings(font_colour) -textvariable {*}]
+    set ::DSx_flush_name [add_de1_variable "$::DSx_home_pages" 320 854 -justify right -anchor "nw" -font [DSx_font font 10] -fill $::DSx_settings(font_colour) -textvariable {*}]
+    set ::DSx_steam_name [add_de1_variable "$::DSx_home_pages" 320 904 -justify right -anchor "nw" -font [DSx_font font 10] -fill $::DSx_settings(font_colour) -textvariable {*}]
+    set ::DSx_water_name [add_de1_variable "$::DSx_home_pages" 320 954 -justify right -anchor "nw" -font [DSx_font font 10] -fill $::DSx_settings(font_colour) -textvariable {*}]
+    ## Nic's addition
+    set ::DSx_grinder_name [add_de1_variable "$::DSx_home_pages" 320 1054 -justify right -anchor "nw" -font [DSx_font font 10] -fill $::DSx_settings(font_colour) -textvariable {*}]
+    ## End Nic's addition
+    set ::DSx_wsaw_name [add_de1_variable "$::DSx_home_pages" 320 1004 -justify right -anchor "nw" -font [DSx_font font 10] -fill $::DSx_settings(font_colour) -textvariable {[wsaw_fav_indicator]}]
     set ::DSx_jug_name [add_de1_variable "$::DSx_home_pages" 190 850 -justify center -anchor "n" -text "" -font [DSx_font font 10] -fill $::DSx_settings(font_colour) -textvariable {[DSx_jug_label]}]
-    add_de1_variable "$::DSx_home_pages" 350 720 -justify right -anchor "nw" -font [DSx_font font 8] -fill $::DSx_settings(font_colour) -textvariable {Beans - [round_to_one_digits $::DSx_settings(bean_weight)]g}
-    add_de1_variable "$::DSx_home_pages" 350 770 -justify right -anchor "nw" -font [DSx_font font 8] -fill $::DSx_settings(font_colour) -textvariable {Shot - (1:[round_to_one_digits [expr (0.01 + $::DSx_settings(saw))/$::DSx_settings(bean_weight)]])  $::DSx_settings(saw)g}
-    add_de1_variable "$::DSx_home_pages" 350 820 -justify right -anchor "nw" -font [DSx_font font 8] -fill $::DSx_settings(font_colour) -textvariable {[DSx_profile_type] [DSx_sav]}
-    add_de1_variable "$::DSx_home_pages" 350 870 -justify right -anchor "nw" -font [DSx_font font 8] -fill $::DSx_settings(font_colour) -textvariable {Flush - [round_to_integer $::DSx_settings(flush_time)][translate "s"]}
-    add_de1_variable "$::DSx_home_pages" 350 920 -justify right -anchor "nw" -font [DSx_font font 8] -fill $::DSx_settings(font_colour) -textvariable {Steam - [DSx_steam_time_text]}
-    add_de1_variable "$::DSx_home_pages" 350 970 -justify right -anchor "nw" -font [DSx_font font 8] -fill $::DSx_settings(font_colour) -textvariable {Water - [return_liquid_measurement $::settings(water_volume)] [return_temperature_measurement $::settings(water_temperature)]}
-    add_de1_variable "$::DSx_home_pages" 350 1020 -justify right -anchor "nw" -font [DSx_font font 8] -fill $::DSx_settings(font_colour) -textvariable {[wsaw_text]}
+    add_de1_variable "$::DSx_home_pages" 350 700 -justify right -anchor "nw" -font [DSx_font font 8] -fill $::DSx_settings(font_colour) -textvariable {Beans - [round_to_one_digits $::DSx_settings(bean_weight)]g}
+    add_de1_variable "$::DSx_home_pages" 350 750 -justify right -anchor "nw" -font [DSx_font font 8] -fill $::DSx_settings(font_colour) -textvariable {Shot - (1:[round_to_one_digits [expr (0.01 + $::DSx_settings(saw))/$::DSx_settings(bean_weight)]])  $::DSx_settings(saw)g}
+    add_de1_variable "$::DSx_home_pages" 350 800 -justify right -anchor "nw" -font [DSx_font font 8] -fill $::DSx_settings(font_colour) -textvariable {[DSx_profile_type] [DSx_sav]}
+    add_de1_variable "$::DSx_home_pages" 350 850 -justify right -anchor "nw" -font [DSx_font font 8] -fill $::DSx_settings(font_colour) -textvariable {Flush - [round_to_integer $::DSx_settings(flush_time)][translate "s"]}
+    add_de1_variable "$::DSx_home_pages" 350 900 -justify right -anchor "nw" -font [DSx_font font 8] -fill $::DSx_settings(font_colour) -textvariable {Steam - [DSx_steam_time_text]}
+    add_de1_variable "$::DSx_home_pages" 350 950 -justify right -anchor "nw" -font [DSx_font font 8] -fill $::DSx_settings(font_colour) -textvariable {Water - [return_liquid_measurement $::settings(water_volume)] [return_temperature_measurement $::settings(water_temperature)]}
+    ## Nic's addition
+    add_de1_variable "$::DSx_home_pages" 350 1050 -justify right -anchor "nw" -font [DSx_font font 8] -fill $::DSx_settings(font_colour) -textvariable {Grinder - $::DSx_settings(grinder_model) @ [round_to_one_digits $::DSx_settings(grinder_setting)]}
+    ## End Nic's addition
+    add_de1_variable "$::DSx_home_pages" 350 1000 -justify right -anchor "nw" -font [DSx_font font 8] -fill $::DSx_settings(font_colour) -textvariable {[wsaw_text]}
     add_de1_variable "$::DSx_home_pages" 200 1450 -justify center -anchor "s" -text "" -font [DSx_font notosansuiregular 24] -fill $::DSx_settings(blue) -textvariable {$::DSx_settings(blue_cup_indicator)}
     add_de1_variable "$::DSx_home_pages" 420 1450 -justify center -anchor "s" -text "" -font [DSx_font notosansuiregular 24] -fill $::DSx_settings(pink) -textvariable {$::DSx_settings(pink_cup_indicator)}
     add_de1_variable "$::DSx_home_pages" 640 1450 -justify center -anchor "s" -text "" -font [DSx_font notosansuiregular 24] -fill $::DSx_settings(orange) -textvariable {$::DSx_settings(orange_cup_indicator)}
@@ -968,7 +974,17 @@ add_de1_variable "DSx_4_workflow" 1372 1470 -justify center -anchor center -font
 add_de1_variable "DSx_4_workflow" 700 1540 -justify center -anchor center -font [DSx_font font 7] -fill $::DSx_settings(font_colour) -textvariable {Water stop at weight}
 add_de1_variable "DSx_4_workflow" 1372 1540 -justify center -anchor center -font [DSx_font font 7] -fill $::DSx_settings(font_colour) -textvariable {off-set}
 add_de1_button "DSx_4_workflow" {say "" $::settings(sound_button_in); horizontal_clicker_int 10 1 ::DSx_settings(wsaw) 0 300 %x %y %x0 %y0 %x1 %y1; save_DSx_settings; save_wsaw_to_settings; clear_wsaw_font;} 300 1370 1100 1570 ""
-add_de1_button "DSx_4_workflow" {say "" $::settings(sound_button_in); horizontal_clicker 0.1 0.1 ::DSx_settings(wsaw_cal) 0 3 %x %y %x0 %y0 %x1 %y1; save_DSx_settings;} 1110 1370 1580 1570 ""
+# Nic's Addition - Grinder
+add_de1_image "DSx_4_workflow" 1660 550 "[skin_directory_graphics]/icons/click.png"
+add_de1_variable "DSx_4_workflow" 2060 590 -justify center -anchor center -font [DSx_font font 8] -fill $::DSx_settings(font_colour) -textvariable {Grinder Setting}
+add_de1_variable "DSx_4_workflow" 2060 650 -justify center -anchor center -font [DSx_font font 10] -fill $::DSx_settings(font_colour) -textvariable {[round_to_one_digits $::DSx_settings(grinder_setting)]}
+add_de1_variable "DSx_4_workflow" 1880 710 -justify center -anchor center -font [DSx_font font 7] -fill $::DSx_settings(font_colour) -textvariable {Grinder Name:}
+add_de1_button "DSx_4_workflow" {say "" $::settings(sound_button_in); horizontal_clicker 1 0.1 ::DSx_settings(grinder_setting) -10 100 %x %y %x0 %y0 %x1 %y1; save_DSx_settings} 1660 550 2460 750 ""
+add_de1_widget "DSx_4_workflow" entry 2005 685 {
+        bind $widget <Return> { say [translate {save}] $::settings(sound_button_in); borg toast [translate "Saved"]; hide_android_keyboard}
+        bind $widget <Leave> hide_android_keyboard
+    } -width 20 -font [DSx_font font 6] -borderwidth 1 -background white -foreground black -textvariable ::DSx_settings(grinder_model) -relief flat
+# End Addition
 # favourite
 add_de1_image "DSx_4_workflow" 1830 900 "[skin_directory_graphics]/icons/bluecup.png"
 add_de1_image "DSx_4_workflow" 2050 900 "[skin_directory_graphics]/icons/pinkcup.png"

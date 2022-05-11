@@ -333,6 +333,15 @@ proc check_DSx_variables {} {
 		set ::DSx_settings(extra_past_shot_fields) {bean_brand bean_type roast_date roast_level bean_notes grinder_model grinder_setting drink_tds drink_ey espresso_enjoyment espresso_notes my_name scentone skin beverage_type}
 	}
 	### end of addition ###	
+
+    ### Nic's addition ###
+    if {[info exists ::DSx_settings(grinder_model)] == 0} {
+        set ::DSx_settings(grinder_model) "?"
+    }
+    if {[info exists ::DSx_settings(grinder_setting)] == 0} {
+        set ::DSx_settings(grinder_setting) "?"
+    }
+    ### end of addition ###
 }
 
 proc check_settings_for_DSx_added_variables {} {
@@ -1272,6 +1281,8 @@ proc favourites_DSx_settings_vars {} {
         extracting_weight_rate
         extracting_weight
         bean_weight
+        grinder_model
+        grinder_setting
     }
 }
 
@@ -1668,6 +1679,7 @@ proc blue_font_set {} {
     .can itemconfigure $::DSx_water_name -fill $::DSx_settings(blue)
     .can itemconfigure $::DSx_wsaw_name -fill $::DSx_settings(blue)
     .can itemconfigure $::DSx_jug_name -fill $::DSx_settings(blue)
+    .can itemconfigure $::DSx_grinder_name -fill $::DSx_settings(blue)
 }
 
 proc pink_font_set {} {
@@ -1680,6 +1692,7 @@ proc pink_font_set {} {
     .can itemconfigure $::DSx_water_name -fill $::DSx_settings(pink)
     .can itemconfigure $::DSx_wsaw_name -fill $::DSx_settings(pink)
     .can itemconfigure $::DSx_jug_name -fill $::DSx_settings(pink)
+    .can itemconfigure $::DSx_grinder_name -fill $::DSx_settings(pink)
 }
 
 proc orange_font_set {} {
@@ -1692,6 +1705,7 @@ proc orange_font_set {} {
     .can itemconfigure $::DSx_water_name -fill $::DSx_settings(orange)
     .can itemconfigure $::DSx_wsaw_name -fill $::DSx_settings(orange)
     .can itemconfigure $::DSx_jug_name -fill $::DSx_settings(orange)
+	.can itemconfigure $::DSx_grinder_name -fill $::DSx_settings(orange)
 }
 
 ######################
